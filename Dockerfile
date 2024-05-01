@@ -3,7 +3,7 @@ FROM python:3.11-alpine
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
-ENV PORT 8000
+ENV PORT 8001
 
 
 # Install system dependencies specific to Alpine Linux

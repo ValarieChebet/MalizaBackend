@@ -39,4 +39,4 @@ delete-volume:
 
 refresh:
 	docker compose -f docker-compose.yml pull
-	docker compose -f docker-compos.yml up -d --force-recreate --remove-orphans
+	docker compose -f docker-compose.yml up -d --force-recreate --remove-orphans
