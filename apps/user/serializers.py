@@ -37,14 +37,8 @@ class UserSerializer(serializers.ModelSerializer):
     def get_last_name(self, obj):
         return obj.last_name.title()
 
-    def to_representation(self, instance):
-        representation = super(UserSerializer, self).to_representation(instance)
-        if instance.is_superuser:
-            representation["admin"] = True
-        return representation
-
 
 class CreateUserSerializer(UserCreateSerializer):
     class Meta(UserCreateSerializer.Meta):
         model = User
-        fields = ["id", "username", "email", "first_name", "last_name", "password"]
+        fields = ["phone_number" "username", "email", "first_name", "last_name", "password"]
