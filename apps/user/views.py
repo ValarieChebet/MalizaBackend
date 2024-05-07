@@ -1,4 +1,4 @@
-from rest_framework.permissions import IsAuthenticated
+#from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import CreateUserSerializer, UserSerializer
@@ -6,7 +6,7 @@ from .serializers import CreateUserSerializer, UserSerializer
 # Create your views here.
 
 class CreateUserAPIView(APIView):
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated]
     serializer_class = CreateUserSerializer
 
     def post(self, request):
