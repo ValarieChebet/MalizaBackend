@@ -21,7 +21,7 @@ def generate_otp(request):
             phone_number=phone_number,
             defaults={'otp': otp, 'expiry_time': expiry_time}
         )
-        # Here, you would send the OTP to the user via SMS or any other method
+        
         return Response({'message': 'OTP generated successfully'}, status=status.HTTP_200_OK)
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -36,10 +36,7 @@ def verify_otp(request):
         otp_obj = get_object_or_404(OTP, phone_number=phone_number)
         # Check if the OTP is still valid and matches the one provided
         if otp_obj.is_valid() and otp_obj.otp == otp:
-            # OTP is valid, perform additional actions if needed
-            # For example, mark the OTP as verified
-            # otp_obj.is_verified = True
-            # otp_obj.save()
+            
             return Response({'message': 'OTP verified successfully'}, status=status.HTTP_200_OK)
         else:
             return Response({'error': 'Invalid OTP'}, status=status.HTTP_400_BAD_REQUEST)

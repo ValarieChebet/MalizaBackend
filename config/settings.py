@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'apps.profiles',
     'apps.authentication',
     'apps.user',
+    'apps.payments',
 
     # Third-party apps
     'rest_framework',
@@ -126,3 +127,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+PAYSTACK_SECRET = "sk_test_0f5dd9f4f8908c095913129a9fbb43aa52bb3b15"

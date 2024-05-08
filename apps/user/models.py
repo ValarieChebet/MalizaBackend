@@ -1,5 +1,7 @@
 import uuid
+import logging
 
+from apps.payments.models import UserAccount
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db import models
 from django.utils import timezone
@@ -7,6 +9,7 @@ from django.utils.translation import gettext_lazy as _
 
 from apps.user.managers import CustomUserManager
 
+logger = logging.getLogger(__name__)
 
 class User(AbstractBaseUser, PermissionsMixin):
     pkid = models.BigAutoField(primary_key=True, editable=False)
@@ -37,3 +40,13 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_short_name(self):
         return self.username
+
+    def retrieve_account(self) -> UserAccount:
+        try:
+            acc = getattr(self, "account")
+        except Exception as e:
+            logger.warning(e)
+            UserAccount.objects.create(user=self)
+        finally:
+            acc = getattr(self, "account")
+        return acc
