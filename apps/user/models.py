@@ -6,9 +6,13 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
-
+from django.contrib.auth import get_user_model
 from apps.user.managers import CustomUserManager
+User = get_user_model()
 
+class UserAccount(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    balance = models.DecimalField(max_digits=10, decimal_places=2)
 logger = logging.getLogger(__name__)
 
 class User(AbstractBaseUser, PermissionsMixin):

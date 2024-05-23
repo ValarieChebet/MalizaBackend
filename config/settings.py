@@ -29,12 +29,13 @@ INSTALLED_APPS = [
     # Local apps
     'apps.profiles',
     'apps.authentication',
-    'apps.user',
     'apps.payments',
+    'apps.user'
 
     # Third-party apps
     'rest_framework',
     'drf_yasg',
+    'savings_app'
 ]
 
 MIDDLEWARE = [
